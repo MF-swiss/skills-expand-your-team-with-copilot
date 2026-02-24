@@ -569,6 +569,12 @@ document.addEventListener("DOMContentLoaded", () => {
         `
         }
       </div>
+      <div class="share-buttons">
+        <span class="share-label">Share:</span>
+        <button class="share-btn share-twitter" data-activity="${name}" aria-label="Share on Twitter" title="Share on Twitter">𝕏</button>
+        <button class="share-btn share-facebook" data-activity="${name}" aria-label="Share on Facebook" title="Share on Facebook">f</button>
+        <button class="share-btn share-copy" data-activity="${name}" aria-label="Copy link" title="Copy link">🔗</button>
+      </div>
     `;
 
     // Add click handlers for delete buttons
@@ -586,6 +592,36 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
     }
+
+    // Add click handlers for share buttons
+    const shareUrl = `${window.location.origin}${window.location.pathname}?activity=${encodeURIComponent(name)}`;
+    const shareText = `Check out "${name}" at Mergington High School!`;
+
+    activityCard.querySelector(".share-twitter").addEventListener("click", () => {
+      window.open(
+        `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`,
+        "_blank",
+        "noopener,noreferrer"
+      );
+    });
+
+    activityCard.querySelector(".share-facebook").addEventListener("click", () => {
+      window.open(
+        `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`,
+        "_blank",
+        "noopener,noreferrer"
+      );
+    });
+
+    activityCard.querySelector(".share-copy").addEventListener("click", (event) => {
+      navigator.clipboard.writeText(shareUrl).then(() => {
+        const btn = event.target;
+        btn.textContent = "✓";
+        setTimeout(() => { btn.textContent = "🔗"; }, 2000);
+      }).catch(() => {
+        showMessage("Could not copy link. Please copy the URL manually.", "error");
+      });
+    });
 
     activitiesList.appendChild(activityCard);
   }
