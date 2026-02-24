@@ -690,46 +690,63 @@ footer {
   background-color: rgba(255, 255, 255, 0.3);
 }
 
-/* Dark mode toggle button */
-#dark-mode-toggle {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
-  padding: 4px 10px;
-  font-size: 1rem;
-  line-height: 1;
+/* Social share buttons */
+.share-buttons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-top: 8px;
+  margin-top: 6px;
+  border-top: 1px solid var(--border-light);
+}
+
+.share-label {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  margin-right: 2px;
+}
+
+.share-btn {
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: bold;
   cursor: pointer;
-  border: none;
-  color: white;
-  transition: background-color 0.2s;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  line-height: 1;
 }
 
-#dark-mode-toggle:hover {
-  background-color: rgba(255, 255, 255, 0.3);
+.share-btn svg {
+  pointer-events: none;
 }
 
-/* Dark mode input and search box */
-body.dark-mode .search-box input {
-  background-color: var(--surface);
-  color: var(--text-primary);
-  border-color: var(--border);
+.share-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
-body.dark-mode .category-filter,
-body.dark-mode .day-filter,
-body.dark-mode .time-filter {
-  background-color: var(--surface);
-  border-color: var(--border);
-  color: var(--text-primary);
+.share-twitter:hover {
+  background-color: #000;
+  color: #fff;
+  border-color: #000;
 }
 
-body.dark-mode .activity-tag {
-  background: #2a2d5a !important;
-  color: #9fa8da !important;
+.share-facebook:hover {
+  background-color: #1877f2;
+  color: #fff;
+  border-color: #1877f2;
 }
 
-body.dark-mode input,
-body.dark-mode textarea {
-  background-color: var(--surface);
-  color: var(--text-primary);
-  border-color: var(--border);
+.share-copy:hover {
+  background-color: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
 }
